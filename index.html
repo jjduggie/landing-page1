@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authority Landing Pages for Coaches & Consultants</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0f0f0f;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero h2 {
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+            color: #cccccc;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+            margin: 10px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid #ff6b35;
+            color: #ff6b35;
+            box-shadow: none;
+        }
+        
+        .cta-secondary:hover {
+            background: #ff6b35;
+            color: white;
+        }
+        
+        /* Pain Points Section */
+        .pain-section {
+            background: #151515;
+            padding: 80px 0;
+        }
+        
+        .pain-content {
+            text-align: center;
+        }
+        
+        .pain-section h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #ff6b35;
+            margin-bottom: 40px;
+        }
+        
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .pain-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            text-align: left;
+        }
+        
+        .pain-item h3 {
+            color: #ff6b35;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .pain-item p {
+            color: #cccccc;
+            font-size: 1rem;
+        }
+        
+        /* Solution Section */
+        .solution-section {
+            background: #0f0f0f;
+            padding: 80px 0;
+        }
+        
+        .solution-intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .solution-intro h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        
+        .solution-intro p {
+            font-size: 1.2rem;
+            color: #cccccc;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Pricing Tiers */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: #ff6b35;
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid #ff6b35;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            color: #ff6b35;
+            margin-bottom: 10px;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        
+        .price-note {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+        
+        .features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .features li {
+            color: #cccccc;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .features li::before {
+            content: "✓";
+            color: #ff6b35;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Benefits Section */
+        .benefits-section {
+            background: #1a1a1a;
+            padding: 80px 0;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .benefit-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+        }
+        
+        .benefit-item h3 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .benefit-item p {
+            color: #cccccc;
+        }
+        
+        /* Testimonials Section */
+        .testimonials-section {
+            background: #151515;
+            padding: 80px 0;
+        }
+        
+        .testimonials-section h2 {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #ffffff;
+            margin-bottom: 50px;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid #ff6b35;
+        }
+        
+        .testimonial p {
+            color: #cccccc;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            color: #ff6b35;
+            font-weight: bold;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            background: #0f0f0f;
+            padding: 80px 0;
+        }
+        
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .step h3 {
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+        
+        .step p {
+            color: #cccccc;
+        }
+        
+        /* Final CTA Section */
+        .final-cta {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        
+        .final-cta p {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .cta-button {
+                display: block;
+                margin: 10px auto;
+                width: fit-content;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Stop Losing Clients to Amateur-Looking Landing Pages</h1>
+                <h2>Professional landing pages that position you as the authority and book high-value clients 24/7 – so you can focus on what you do best: coaching.</h2>
+                <div class="cta-buttons">
+                    <a href="#pricing" class="cta-button">Choose Your Template</a>
+                    <a href="#contact" class="cta-button cta-secondary">Book Strategy Call</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section class="pain-section">
+        <div class="container">
+            <div class="pain-content">
+                <h2>Every Day You Wait, You're Bleeding Money</h2>
+                <div class="pain-grid">
+                    <div class="pain-item">
+                        <h3>💸 Lost Revenue Every Single Day</h3>
+                        <p>Every potential client who scrolls past your amateur-looking page is money walking out the door. One missed high-value client could be $5,000+ in lost revenue.</p>
+                    </div>
+                    <div class="pain-item">
+                        <h3>⏰ Wasting Time on DIY Disasters</h3>
+                        <p>You're spending 20+ hours wrestling with Canva and Wix instead of coaching clients. Your time is worth $200+/hour – stop doing $15/hour work.</p>
+                    </div>
+                    <div class="pain-item">
+                        <h3>🏆 Looking Small Next to Polished Competitors</h3>
+                        <p>Your expertise is world-class, but your landing page makes you look like a beginner. Prospects choose coaches who LOOK like authorities online.</p>
+                    </div>
+                    <div class="pain-item">
+                        <h3>😤 Your True Value Isn't Coming Across</h3>
+                        <p>You're worth every penny you charge, but your current page doesn't communicate that. Prospects can't see your authority, so they keep shopping around.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section">
+        <div class="container">
+            <div class="solution-intro">
+                <h2>The Solution: Authority Landing Pages That Book Clients</h2>
+                <p>Your landing page should be your #1 sales tool – converting visitors into booked calls and positioned clients. Here's how we make that happen.</p>
+            </div>
+            
+            <div class="pricing-grid" id="pricing">
+                <div class="pricing-card">
+                    <h3>Basic Template</h3>
+                    <div class="price">$497</div>
+                    <div class="price-note">Just 1 new client pays for it</div>
+                    <ul class="features">
+                        <li>Professional pre-made template</li>
+                        <li>Mobile-optimized design</li>
+                        <li>Lead capture forms</li>
+                        <li>Social proof sections</li>
+                        <li>Call-to-action buttons</li>
+                        <li>Basic customization guide</li>
+                    </ul>
+                    <a href="#" class="cta-button">Get Started</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <h3>Professional Template</h3>
+                    <div class="price">$997</div>
+                    <div class="price-note">ROI in first 2 clients</div>
+                    <ul class="features">
+                        <li>Conversion-optimized template</li>
+                        <li>Authority-building design elements</li>
+                        <li>Advanced psychology triggers</li>
+                        <li>A/B tested layouts</li>
+                        <li>Testimonial showcase sections</li>
+                        <li>Calendar booking integration</li>
+                        <li>Email sequence templates</li>
+                        <li>30-day optimization support</li>
+                    </ul>
+                    <a href="#" class="cta-button">Most Popular Choice</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Custom Landing Page</h3>
+                    <div class="price">$2,497</div>
+                    <div class="price-note">3-5 clients = full ROI</div>
+                    <ul class="features">
+                        <li>100% custom design</li>
+                        <li>Personal brand integration</li>
+                        <li>Custom copywriting</li>
+                        <li>Advanced conversion optimization</li>
+                        <li>Competitor analysis</li>
+                        <li>Multiple page variations</li>
+                        <li>90-day optimization period</li>
+                        <li>Strategy consultation included</li>
+                    </ul>
+                    <a href="#" class="cta-button">Premium Solution</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">📅</div>
+                    <h3>More Qualified Bookings</h3>
+                    <p>Pre-qualify prospects and book high-value discovery calls automatically</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">👑</div>
+                    <h3>Instant Authority</h3>
+                    <p>Professional design that positions you as the go-to expert in your niche</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Higher-Paying Clients</h3>
+                    <p>Premium positioning attracts clients willing to invest in premium coaching</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🚀</div>
+                    <h3>24/7 Client Acquisition</h3>
+                    <p>Your page works while you sleep, booking calls and nurturing leads</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Done-For-You Solution</h3>
+                    <p>No more DIY disasters – professional results without the learning curve</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📈</div>
+                    <h3>Measurable ROI</h3>
+                    <p>Track conversions and optimize for maximum client acquisition</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2>What Coaches Are Saying</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p>"My new landing page tripled my booking rate in the first month. The professional look immediately positioned me as an authority in my space."</p>
+                    <div class="testimonial-author">- Sarah K., Business Coach</div>
+                </div>
+                <div class="testimonial">
+                    <p>"I was spending 3 hours every weekend trying to fix my website. Now I have a page that actually converts and I can focus on my clients."</p>
+                    <div class="testimonial-author">- Marcus T., Fitness Coach</div>
+                </div>
+                <div class="testimonial">
+                    <p>"The custom page paid for itself with just two new clients. My conversion rate went from 2% to 15% almost overnight."</p>
+                    <div class="testimonial-author">- Jennifer L., Mindset Coach</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="solution-intro">
+                <h2>How It Works</h2>
+                <p>From amateur to authority in just days, not months</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Choose Your Solution</h3>
+                    <p>Select the template or custom option that fits your needs and budget</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Customize & Launch</h3>
+                    <p>We handle the setup or provide easy customization instructions</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Start Booking Clients</h3>
+                    <p>Watch as qualified prospects turn into booked calls and paying clients</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta" id="contact">
+        <div class="container">
+            <h2>Stop Losing Money to Amateur Pages</h2>
+            <p>Every day you wait is another day of lost revenue. Your expertise deserves a landing page that matches your authority. One new client pays for the entire investment.</p>
+            <div class="cta-buttons">
+                <a href="#pricing" class="cta-button">Choose Your Template</a>
+                <a href="#" class="cta-button cta-secondary">Book Strategy Call</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
